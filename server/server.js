@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const path = require('path');
 const port = 3000;
 
 const connection = mysql.createConnection({
@@ -11,9 +12,11 @@ connection.connect();
 
 const app = express();
 
+const build = path.resolve(__dirname + '/../fe/build/');
+
 app.get('/', (req, res) => {
     // HTML
-    res.send('Hello World!');
+    res.sendFile(build + '/index.html');
 });
 
 app.get('/api/stations', (req, res) => {
@@ -40,6 +43,8 @@ app.post('/api/enable_notice', (req, res) => {
         res.send(JSON.stringify(r));
     });
 });
+
+app.use(express.static(build));
 
 app.listen(port, () => {
     console.log(`Server up at ${port}`);
