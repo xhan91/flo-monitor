@@ -12,3 +12,10 @@
 - [ ] To have the script to request from FLO website and insert values into db and send email
 - [ ] Server to handle enable / disable UI
 - [ ] Server to show heat graph
+
+## Process to deploy
+- git clone repo
+- npm install
+- cd fe; npm install; npm run build
+- node script/run.js
+- node server/server.js
