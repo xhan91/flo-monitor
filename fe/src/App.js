@@ -7,14 +7,8 @@ class App extends Component {
 
   constructor() {
     super();
-    let stations = [
-      {
-        name: 'station1',
-        id: '1',
-        status: 1
-      }
-    ];
-    stations = [];
+    let stations = [{"id":"20489a6b-ac43-4025-ac8a-0dd5ccf77f40","name":"AAA-10311","status":0,"last_updated":"2018-01-18T23:34:37.000Z"},{"id":"89dd06a3-b54c-4d38-9f19-7566ced6a791","name":"AAA-10322","status":0,"last_updated":"2018-01-18T23:34:37.000Z"}];
+    // stations = [];
     this.state = {
       stations: stations
     }
@@ -36,7 +30,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.getStations();
+    // this.getStations();
   }
 
   render() {
