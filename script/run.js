@@ -1,13 +1,5 @@
 const flo = require('./flo');
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'josh',
-    database: 'flo'
-});
-connection.connect();        
-
+const getConnection = require('../db/connection').getConnection;
 
 function extractFloData(floData) {
     // console.log(floData);
@@ -18,8 +10,11 @@ function extractFloData(floData) {
     if (status !== 2) {
         console.log("NOTICE: CHARGING IS AVAILABLE NOW");
     }
-    connection.query(sql, (e, r, f) => {
-        if (e) console.log(e);
+    getConnection((connection) => {
+        connection.query(sql, (e, r, f) => {
+            if (e) console.log(e);
+            connection.release();
+        });
     });
 }
 
