@@ -40,7 +40,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Flo Monitor</h1>
         </header>
-        <div className="container mt-5">
+        <div className="container mb-5">
           <div className="row">
             {this.state.stations.map((station) => {
               return <Station station={station} />

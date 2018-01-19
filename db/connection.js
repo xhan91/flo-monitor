@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const config = {
     host: 'localhost',
-    user: 'josh',
+    user: 'xhan91',
     database: 'flo',
     connectionLimit: 10
 };
