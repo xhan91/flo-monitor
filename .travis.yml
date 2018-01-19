@@ -1,0 +1,11 @@
+language: node_js
+node_js: v8.9.4
+
+install:
+  - npm install
+  - cd ./fe && npm install && npm run build
+
+script:
+  - cd ./script && nohup node run.js > run.log 2>&1 &
+  - cd ..
+  - cd ./server && nohub node server.js > server.log 2>&1 &
