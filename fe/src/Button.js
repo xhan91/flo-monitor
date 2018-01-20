@@ -10,7 +10,7 @@ class Station extends Component {
         const ts = new Date(last_updated);
         return (
             <div className="col-sm-6">
-                <div className="card mb-3">
+                <div className="card  mt-5">
                     <img className="card-img-top" src={status ? tesla : bike} alt="card image cap"/>
                     <div className={"card-body " + (status ? "bg-success" : "bg-danger")}>
                         <h1>{name}</h1>
