@@ -1,7 +1,9 @@
 const request = require('request');
 const fs = require('fs');
+const path = require('path');
 
-let json = fs.readFileSync('info.json');
+const info = path.resolve(__dirname + '/info.json');
+let json = fs.readFileSync(info);
 json = JSON.parse(json);
 
 headers = {

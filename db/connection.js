@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 const config = {
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'xhan91',
     database: 'flo',
     connectionLimit: 10
