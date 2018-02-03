@@ -11,6 +11,9 @@ ADD run.sh /opt
 RUN cd /opt && npm install
 RUN cd /opt/fe && npm install && npm run build
 
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN mkdir -p /root/log
 RUN chmod +x /opt/run.sh
 
