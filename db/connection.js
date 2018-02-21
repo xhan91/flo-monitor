@@ -6,17 +6,19 @@ const config = {
     database: 'flo',
     connectionLimit: 10
 };
+
 let pool;
 
-// useConnection is a function that accepts an connected connection object, and should call connection.release() in the callback.
-const getConnection = (useConnection) => {
-    if (!pool) {
-        pool = mysql.createPool(config);
-    }
-    // console.log(pool);
-    pool.getConnection((err, connection) => {
-        if (err) console.log(err);
-        useConnection(connection);
+// resolve is a function that accepts an connected connection object, and should call connection.release() at the end.
+const getConnection = () => {
+    return new Promise((resolve, reject) => {
+        if (!pool) {
+            pool = mysql.createPool(config);
+        }
+        pool.getConnection((err, connection) => {
+            if (err) console.log(err);
+            resolve(connection);
+        });
     });
 }
 
