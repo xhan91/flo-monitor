@@ -13,7 +13,7 @@ function extractFloData(floData) {
     // check if the status changed, and if it is, update the timestamp of last_status_changed;
     const checkSql = `SELECT status FROM station WHERE id = '${id}'`;
     const updateSql = `UPDATE station SET last_status_changed = NOW() WHERE id = '${id}'`;
-    getConnection().then((connection) => {
+    getConnection((connection) => {
         connection.query(checkSql, (e, r, f) => {
             if (e) console.log(e);
             const dbStatus = r[0].status;
@@ -30,7 +30,7 @@ function extractFloData(floData) {
     });
 
     const sql = `INSERT INTO station VALUES ('${id}', '${name}', ${status}, NOW(), NOW()) ON DUPLICATE KEY UPDATE status=${status}, last_updated=NOW()`;    
-    getConnection().then((connection) => {
+    getConnection((connection) => {
         connection.query(sql, (e, r, f) => {
             if (e) console.log(e);
             connection.release();
