@@ -14,6 +14,10 @@
   color: white;
 }
 
+.App-header.offline {
+  background-color: #dc3545;
+}
+
 .App-title {
   font-size: 1.5em;
 }
