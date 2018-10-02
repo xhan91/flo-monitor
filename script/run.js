@@ -4,8 +4,8 @@ const getConnection = require('../db/connection').getConnection;
 function extractFloData(floData) {
     const id = floData.Id;
     const name = floData.Name;
-    // floData.Status: 1 - available; 2 - in use;
-    const status = floData.Status !== 2;
+    // floData.Status: 1 - available; 2 'InUse' - in use;
+    const status = floData.State !== 'InUse';
     if (status) {
         console.log("NOTICE: CHARGING IS AVAILABLE NOW");
     }
@@ -43,7 +43,7 @@ const doIt = () => {
         //timestamp
         const time = new Date();
         console.log(`------ ${time.getHours()}:${time.getMinutes()} ------`)
-        data.forEach(extractFloData);
+        Object.values(data.ports).forEach(extractFloData);
     });
 }
 
